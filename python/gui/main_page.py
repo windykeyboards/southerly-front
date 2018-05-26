@@ -236,11 +236,16 @@ class Ui_MainWindow(QtWidgets.QWidget):
         Replay the macro assigned to the currently selected key
         Show a visual indication the playback is taking place
 
-        TODO implement
-
         :return: None
         """
-        print("Unimplemented playback")
+        if self.selected_key in self.macros.keys():
+            self.set_stylesheet(self.playback_macro_btn, 'background-color:#FF0000;')
+            self.playback_macro_btn.setText('PLAYBACK')
+            self.playback_macro_btn.repaint()
+
+            macro_parse.execute_recording(self.macros[self.selected_key]['key_events'])
+            self.set_stylesheet(self.playback_macro_btn, '')
+            self.playback_macro_btn.setText("Playback Macro")
 
     def load_macro(self):
         """
@@ -325,6 +330,12 @@ class Ui_MainWindow(QtWidgets.QWidget):
             self.macro_string_label.setText("- recorded macro string -")
 
     def parse_macro_to_string(self, macro_dict):
+        """
+        Used to set labels for the user, shows which keys were recorded
+
+        :param macro_dict: Dictionary of timings to key actions
+        :return:    String of concatenated keypresses
+        """
         temp_str = ''
         for key in macro_dict.keys():
             try:

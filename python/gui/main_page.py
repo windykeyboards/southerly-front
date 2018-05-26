@@ -3,7 +3,9 @@ Modified from the layout created by QtDesigner
 Same source, but code layout beautified and simplified
 """
 
+import re
 from PyQt5 import QtCore, QtGui, QtWidgets
+from python.macro_record import macro_parse
 
 
 class Ui_MainWindow(QtWidgets.QWidget):
@@ -12,15 +14,19 @@ class Ui_MainWindow(QtWidgets.QWidget):
         # Set size
         self.setWindowTitle('Windy M1')
         self.setGeometry(600, 400, 440, 340)
-        #MainWindow = QtWidgets.QMainWindow()
-        #MainWindow.resize(525, 440)
-        #MainWindow.setBaseSize(QtCore.QSize(90, 90))
 
         self.centralwidget = QtWidgets.QWidget()
         self.verticalLayoutWidget = QtWidgets.QWidget(self.centralwidget)
         self.verticalLayoutWidget.setGeometry(QtCore.QRect(40, 10, 471, 380))
         self.verticalLayout = QtWidgets.QVBoxLayout(self.verticalLayoutWidget)
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
+
+        '''
+        Data storage variables
+        '''
+        self.selected_key = 1
+        # A dictionary of selected keys to macro recordings
+        self.macros = {}
 
         '''
         User interaction assets
@@ -46,18 +52,23 @@ class Ui_MainWindow(QtWidgets.QWidget):
 
         self.record_macro_btn = QtWidgets.QPushButton(self.verticalLayoutWidget)
         self.record_macro_btn.setText("Record Macro")
+        self.record_macro_btn.clicked.connect(self.record_macro)
 
         self.playback_macro_btn = QtWidgets.QPushButton(self.verticalLayoutWidget)
         self.playback_macro_btn.setText("Playback Macro")
+        self.playback_macro_btn.clicked.connect(self.playback_macro)
 
         self.save_macro_btn = QtWidgets.QPushButton(self.verticalLayoutWidget)
         self.save_macro_btn.setText("Save Macro")
+        self.save_macro_btn.clicked.connect(self.save_macro)
 
         self.load_macro_btn = QtWidgets.QPushButton(self.verticalLayoutWidget)
         self.load_macro_btn.setText("Load Macro")
+        self.load_macro_btn.clicked.connect(self.load_macro)
 
         self.program_device_btn = QtWidgets.QPushButton(self.verticalLayoutWidget)
         self.program_device_btn.setText("Program Device")
+        self.program_device_btn.clicked.connect(self.program_device)
 
         '''
         Keycap buttons
@@ -66,26 +77,32 @@ class Ui_MainWindow(QtWidgets.QWidget):
         self.keycap_one_btn = QtWidgets.QPushButton(self.verticalLayoutWidget)
         self.keycap_one_btn.setMinimumSize(QtCore.QSize(100, 100))
         self.keycap_one_btn.setText("PushButton")
+        self.keycap_one_btn.clicked.connect(lambda: self.select_keyboard_button(1))
 
         self.keycap_two_btn = QtWidgets.QPushButton(self.verticalLayoutWidget)
         self.keycap_two_btn.setMinimumSize(QtCore.QSize(100, 100))
         self.keycap_two_btn.setText("PushButton")
+        self.keycap_two_btn.clicked.connect(lambda: self.select_keyboard_button(2))
 
         self.keycap_three_btn = QtWidgets.QPushButton(self.verticalLayoutWidget)
         self.keycap_three_btn.setMinimumSize(QtCore.QSize(100, 100))
         self.keycap_three_btn.setText("PushButton")
+        self.keycap_three_btn.clicked.connect(lambda: self.select_keyboard_button(3))
 
         self.keycap_four_btn = QtWidgets.QPushButton(self.verticalLayoutWidget)
         self.keycap_four_btn.setMinimumSize(QtCore.QSize(100, 100))
         self.keycap_four_btn.setText("PushButton")
+        self.keycap_four_btn.clicked.connect(lambda: self.select_keyboard_button(4))
 
         self.keycap_five_btn = QtWidgets.QPushButton(self.verticalLayoutWidget)
         self.keycap_five_btn.setMinimumSize(QtCore.QSize(100, 100))
         self.keycap_five_btn.setText("PushButton")
+        self.keycap_five_btn.clicked.connect(lambda: self.select_keyboard_button(5))
 
         self.keycap_six_btn = QtWidgets.QPushButton(self.verticalLayoutWidget)
         self.keycap_six_btn.setMinimumSize(QtCore.QSize(100, 100))
         self.keycap_six_btn.setText("PushButton")
+        self.keycap_six_btn.clicked.connect(lambda: self.select_keyboard_button(6))
 
         '''
         Spacer items
@@ -164,14 +181,10 @@ class Ui_MainWindow(QtWidgets.QWidget):
         '''
         Setup Main Window
         '''
-        #MainWindow.setCentralWidget(self.centralwidget)
+        self.select_keyboard_button(1)
         self.menubar = QtWidgets.QMenuBar()
         self.menubar.setGeometry(QtCore.QRect(0, 0, 525, 21))
-        #MainWindow.setMenuBar(self.menubar)
-        #self.statusbar = QtWidgets.QStatusBar(MainWindow)
-        #MainWindow.setStatusBar(self.statusbar)
 
-        #QtCore.QMetaObject.connectSlotsByName(MainWindow)
         self.setLayout(self.verticalLayout)
         self.show()
 
@@ -185,9 +198,148 @@ class Ui_MainWindow(QtWidgets.QWidget):
 
         :return: None
         """
-        text, pressed = QtWidgets.QInputDialog.getText(self, "Label Macro", "Macro Name:", QtWidgets.QLineEdit.Normal, "")
-        if pressed and text!= '':
+        text, pressed = QtWidgets.QInputDialog.getText(self, "Label Macro", "Macro Name:",
+                                                       QtWidgets.QLineEdit.Normal, "")
+        if pressed and text != '':
             self.macro_name_label.setText(text)
+
+    def record_macro(self):
+        """
+        Shows that macro recording has started
+        Starts the listener for macro recording
+        Should display what the exit condition for the macro recording is
+        When the macro finishes, display the recorded macro as a string
+
+        Assign the macro recording to the currently selected key
+
+        :return: None
+        """
+
+        self.set_stylesheet(self.record_macro_btn, 'background-color:#FF0000;')
+        self.record_macro_btn.setText('RECORDING')
+        self.record_macro_btn.repaint()
+
+        recorded_input = macro_parse.listen_to_keyboard()
+
+        self.set_stylesheet(self.record_macro_btn, '')
+        self.record_macro_btn.setText("Record Macro")
+
+        self.macros[self.selected_key] = {}
+        self.macros[self.selected_key]['key_events'] = recorded_input
+        self.macros[self.selected_key]['name'] = self.macro_name_label.text()
+
+        temp_str = self.parse_macro_to_string(recorded_input)
+        self.macro_string_label.setText(temp_str)
+
+    def playback_macro(self):
+        """
+        Replay the macro assigned to the currently selected key
+        Show a visual indication the playback is taking place
+
+        TODO implement
+
+        :return: None
+        """
+        print("Unimplemented playback")
+
+    def load_macro(self):
+        """
+        Load all macros, names, and key assignments
+        File format and place to save settings to be determined by save_macro
+
+        TODO implement
+
+        :return: None
+        """
+        print("Unimplemented load")
+
+    def save_macro(self):
+        """
+        Save all macros, names, and key assignments
+        File format and place to save settings to be determined
+
+        TODO implement
+
+        :return: None
+        """
+        print("Unimplemented save")
+
+    def program_device(self):
+        """
+        Take all key macros stored
+        Parse into the format we need for our controller
+        Save to a file (optional)
+        Open serial pipe to the controller
+        Write to device
+
+        TODO implement
+
+        :return: None
+        """
+        print("Unimplemented program")
+
+    def select_keyboard_button(self, key_button):
+        """
+        Assign the current key so macros are recorded properly
+        Update macro label and string appropriately
+        Change stylesheets to show selected key
+
+        :param key_button: integer, 1 to 6
+        :return: None
+        """
+
+        # TODO Refactor definition of keys to make this code simpler
+        if self.selected_key == 1:
+            self.set_stylesheet(self.keycap_one_btn, '')
+        if self.selected_key == 2:
+            self.set_stylesheet(self.keycap_two_btn, '')
+        if self.selected_key == 3:
+            self.set_stylesheet(self.keycap_three_btn, '')
+        if self.selected_key == 4:
+            self.set_stylesheet(self.keycap_four_btn, '')
+        if self.selected_key == 5:
+            self.set_stylesheet(self.keycap_five_btn, '')
+        if self.selected_key == 6:
+            self.set_stylesheet(self.keycap_six_btn, '')
+
+        self.selected_key = key_button
+
+        if self.selected_key == 1:
+            self.set_stylesheet(self.keycap_one_btn, 'background-color:#F4F9E1;')
+        if self.selected_key == 2:
+            self.set_stylesheet(self.keycap_two_btn, 'background-color:#F4F9E1;')
+        if self.selected_key == 3:
+            self.set_stylesheet(self.keycap_three_btn, 'background-color:#F4F9E1;')
+        if self.selected_key == 4:
+            self.set_stylesheet(self.keycap_four_btn, 'background-color:#F4F9E1;')
+        if self.selected_key == 5:
+            self.set_stylesheet(self.keycap_five_btn, 'background-color:#F4F9E1;')
+        if self.selected_key == 6:
+            self.set_stylesheet(self.keycap_six_btn, 'background-color:#F4F9E1;')
+
+        if self.selected_key in self.macros.keys():
+            self.macro_name_label.setText(self.macros[self.selected_key]['name'])
+            self.macro_string_label.setText(self.parse_macro_to_string(self.macros[self.selected_key]['key_events']))
+        else:
+            self.macro_name_label.setText("- recorded macro name -")
+            self.macro_string_label.setText("- recorded macro string -")
+
+    def parse_macro_to_string(self, macro_dict):
+        temp_str = ''
+        for key in macro_dict.keys():
+            try:
+                temp_str = temp_str + macro_dict[key][0] + \
+                           ' ' + macro_dict[key][1].name + '; '
+            except:
+                temp_str = temp_str + macro_dict[key][0] + \
+                           ' ' + macro_dict[key][1].char + '; '
+
+        temp_str = re.sub(r'press|release', '', temp_str)
+        return temp_str
+
+    def set_stylesheet(self, object, style_string):
+        object.setStyleSheet(style_string)
+
 
 if __name__ == "__main__":
     import sys

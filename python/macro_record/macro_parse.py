@@ -1,4 +1,3 @@
-import argparse
 from python.macro_record import keyboard_interface
 
 
@@ -17,6 +16,22 @@ def parse_timings(events):
     return relative_times
 
 
-to_parse = keyboard_interface.listen('')
-parsed = parse_timings(to_parse)
-keyboard_interface.execute(parsed)
+def alter_timing(events, percent):
+    new_timings = {}
+    for dict_key in sorted(events.keys()):
+        new_timings[dict_key * percent] = events[dict_key]
+
+    return new_timings
+
+def listen_to_keyboard():
+    to_parse = keyboard_interface.listen('')
+    parsed = parse_timings(to_parse)
+
+    # Have to remove the key which terminated the recorded sequence
+    for key in sorted(parsed.keys(), reverse=True):
+        del parsed[key]
+        break
+    return parsed
+
+def execute_recording(key_events):
+    keyboard_interface.execute(key_events)

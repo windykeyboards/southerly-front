@@ -31,12 +31,13 @@ def listen(exit_condition):
     :return:                Dictionary of times, to press/release and key codes
     """
     EXIT_COND = Key.esc
+    global KEY_EVENTS
+    KEY_EVENTS = {} # Clear each time else it stays in memory
     # Collect events until released
     with Listener(
             on_press=on_press,
             on_release=on_release) as listener:
         listener.join()
-
     return KEY_EVENTS
 
 

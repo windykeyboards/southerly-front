@@ -6,13 +6,17 @@ Same source, but code layout beautified and simplified
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_MainWindow(object):
-    def __init__(self, MainWindow):
+class Ui_MainWindow(QtWidgets.QWidget):
+    def __init__(self):
+        super().__init__()
         # Set size
-        MainWindow.resize(525, 440)
-        MainWindow.setBaseSize(QtCore.QSize(90, 90))
+        self.setWindowTitle('Windy M1')
+        self.setGeometry(600, 400, 440, 340)
+        #MainWindow = QtWidgets.QMainWindow()
+        #MainWindow.resize(525, 440)
+        #MainWindow.setBaseSize(QtCore.QSize(90, 90))
 
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
+        self.centralwidget = QtWidgets.QWidget()
         self.verticalLayoutWidget = QtWidgets.QWidget(self.centralwidget)
         self.verticalLayoutWidget.setGeometry(QtCore.QRect(40, 10, 471, 380))
         self.verticalLayout = QtWidgets.QVBoxLayout(self.verticalLayoutWidget)
@@ -31,6 +35,7 @@ class Ui_MainWindow(object):
         self.macro_name_btn = QtWidgets.QPushButton(self.verticalLayoutWidget)
         self.macro_name_btn.setMaximumSize(QtCore.QSize(100, 16777215))
         self.macro_name_btn.setText("Name macro")
+        self.macro_name_btn.clicked.connect(self.label_macro)
 
         self.macro_string_label = QtWidgets.QLabel(self.verticalLayoutWidget)
         self.macro_string_label.setMinimumSize(QtCore.QSize(0, 40))
@@ -159,21 +164,34 @@ class Ui_MainWindow(object):
         '''
         Setup Main Window
         '''
-        MainWindow.setCentralWidget(self.centralwidget)
-        self.menubar = QtWidgets.QMenuBar(MainWindow)
+        #MainWindow.setCentralWidget(self.centralwidget)
+        self.menubar = QtWidgets.QMenuBar()
         self.menubar.setGeometry(QtCore.QRect(0, 0, 525, 21))
-        MainWindow.setMenuBar(self.menubar)
-        self.statusbar = QtWidgets.QStatusBar(MainWindow)
-        MainWindow.setStatusBar(self.statusbar)
+        #MainWindow.setMenuBar(self.menubar)
+        #self.statusbar = QtWidgets.QStatusBar(MainWindow)
+        #MainWindow.setStatusBar(self.statusbar)
 
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        #QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        self.setLayout(self.verticalLayout)
+        self.show()
 
+    def label_macro(self):
+        """
+        Open up a brief text dialog window that allows input
+        Enter key terminates window
+        Alters the macro_name_label
+
+        TODO Allocate into memory associated with current key selected
+
+        :return: None
+        """
+        text, pressed = QtWidgets.QInputDialog.getText(self, "Label Macro", "Macro Name:", QtWidgets.QLineEdit.Normal, "")
+        if pressed and text!= '':
+            self.macro_name_label.setText(text)
 
 if __name__ == "__main__":
     import sys
 
     app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow(MainWindow)
-    MainWindow.show()
+    ui = Ui_MainWindow()
     sys.exit(app.exec_())

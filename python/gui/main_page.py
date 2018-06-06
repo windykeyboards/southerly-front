@@ -4,8 +4,11 @@ Same source, but code layout beautified and simplified
 """
 
 import re
+import os
+import json
 from PyQt5 import QtCore, QtGui, QtWidgets
 from python.macro_record import macro_parse
+from pynput.keyboard import KeyCode, Key
 
 
 class Ui_MainWindow(QtWidgets.QWidget):
@@ -194,14 +197,13 @@ class Ui_MainWindow(QtWidgets.QWidget):
         Enter key terminates window
         Alters the macro_name_label
 
-        TODO Allocate into memory associated with current key selected
-
         :return: None
         """
         text, pressed = QtWidgets.QInputDialog.getText(self, "Label Macro", "Macro Name:",
                                                        QtWidgets.QLineEdit.Normal, "")
         if pressed and text != '':
             self.macro_name_label.setText(text)
+            self.macros[self.selected_key]['name'] = text
 
     def record_macro(self):
         """
@@ -250,24 +252,63 @@ class Ui_MainWindow(QtWidgets.QWidget):
     def load_macro(self):
         """
         Load all macros, names, and key assignments
-        File format and place to save settings to be determined by save_macro
+        File format is json, save file chosen by user
 
-        TODO implement
+        Loads all items into a temporary dictionary
+        Then converts all chars/names of keys into proper key codes
+        This allows easy playback and execution in keyboard_interface.py
 
         :return: None
         """
-        print("Unimplemented load")
+
+        cur_dir = os.path.dirname(os.path.realpath(__file__))
+        file_query = QtWidgets.QFileDialog()
+        load_file_path = file_query.getOpenFileName(directory=cur_dir,
+                                                    filter='*.json')
+        if load_file_path[0] == '':
+            return
+
+        temp_dict = json.load(open(load_file_path[0], 'r'))
+        for key_num in temp_dict.keys():
+            for key_events in temp_dict[key_num].keys():
+                if key_events == 'name':
+                    continue
+                for time_key in temp_dict[key_num][key_events]:
+                    temp_keycode = KeyCode.from_char(temp_dict[key_num][key_events][time_key][1])
+                    temp_dict[key_num][key_events][time_key][1] = temp_keycode
+
+        self.macros = temp_dict
+
 
     def save_macro(self):
         """
         Save all macros, names, and key assignments
-        File format and place to save settings to be determined
+        File format is json for simplicity
+        File location and name to be chosen by user
 
-        TODO implement
+        Keycodes are simplified to either a char, if available, or the key name
+        # TODO look into vk implementation, is it a larger set?
 
         :return: None
         """
-        print("Unimplemented save")
+
+        cur_dir = os.path.dirname(os.path.realpath(__file__))
+        file_query = QtWidgets.QFileDialog()
+        save_file_path = file_query.getSaveFileName(directory=cur_dir,
+                                                    filter='*.json')
+        if save_file_path[0] == '':
+            return
+        class KeyCodeEncoder(json.JSONEncoder):
+            def default(self, obj):
+                # Extract the useful info from the keys, nothing more
+                if isinstance(obj, KeyCode):
+                    return obj.char
+                elif isinstance(obj, Key):
+                    return obj.name
+                return json.JSONEncoder.default(self, obj)
+
+        with open(save_file_path[0], 'w') as fp:
+            json.dump(self.macros, fp, cls=KeyCodeEncoder, indent=4)
 
     def program_device(self):
         """

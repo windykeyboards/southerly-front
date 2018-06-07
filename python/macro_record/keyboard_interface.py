@@ -16,7 +16,7 @@ def on_press(key):
 def on_release(key):
     if key == EXIT_COND:
         # Stop listener
-        print(KEY_EVENTS)
+        # print(KEY_EVENTS)
         return False
     KEY_EVENTS[time.time()] = ['release', key]
 

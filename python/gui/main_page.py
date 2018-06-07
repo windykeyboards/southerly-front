@@ -274,11 +274,21 @@ class Ui_MainWindow(QtWidgets.QWidget):
                 if key_events == 'name':
                     continue
                 for time_key in temp_dict[key_num][key_events]:
-                    temp_keycode = KeyCode.from_char(temp_dict[key_num][key_events][time_key][1])
+                    key_code = temp_dict[key_num][key_events][time_key][1]
+                    if 'Key.' in key_code:
+                        temp_keycode = eval(key_code)
+                    else:
+                        temp_keycode = KeyCode.from_char(key_code)
                     temp_dict[key_num][key_events][time_key][1] = temp_keycode
 
-        self.macros = temp_dict
+        self.macros = {}
+        for key_num in temp_dict.keys():
+            # Integer key numbers get stored as strings
+            self.macros[int(key_num)] = temp_dict[key_num]
+            # And floats for timings are stored as strings also
+            self.macros[int(key_num)]['key_events'] = {float(k): v for k, v in temp_dict[key_num]['key_events'].items()}
 
+        self.select_keyboard_button(1)
 
     def save_macro(self):
         """
@@ -304,7 +314,7 @@ class Ui_MainWindow(QtWidgets.QWidget):
                 if isinstance(obj, KeyCode):
                     return obj.char
                 elif isinstance(obj, Key):
-                    return obj.name
+                    return 'Key.' + obj.name
                 return json.JSONEncoder.default(self, obj)
 
         with open(save_file_path[0], 'w') as fp:

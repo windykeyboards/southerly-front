@@ -9,6 +9,7 @@ import json
 from PyQt5 import QtCore, QtGui, QtWidgets
 from python.macro_record import macro_parse
 from pynput.keyboard import KeyCode, Key
+from python.device_programming import macro_language_parse
 
 
 class Ui_MainWindow(QtWidgets.QWidget):
@@ -223,6 +224,15 @@ class Ui_MainWindow(QtWidgets.QWidget):
 
         recorded_input = macro_parse.listen_to_keyboard()
 
+        # bug fix, to remove
+        # Add the vk into the list of recorded_input for later save/load of macro
+        for key in recorded_input.keys():
+            temp_key = recorded_input[key][1]
+            if isinstance(temp_key, KeyCode):
+                recorded_input[key].append(temp_key.vk)
+            else:
+                recorded_input[key].append(temp_key.value.vk)
+
         self.set_stylesheet(self.record_macro_btn, '')
         self.record_macro_btn.setText("Record Macro")
 
@@ -279,6 +289,8 @@ class Ui_MainWindow(QtWidgets.QWidget):
                         temp_keycode = eval(key_code)
                     else:
                         temp_keycode = KeyCode.from_char(key_code)
+                        # Add in vk if it is missing (only the case for char keycodes)
+                        temp_keycode.vk = temp_dict[key_num][key_events][time_key][2]
                     temp_dict[key_num][key_events][time_key][1] = temp_keycode
 
         self.macros = {}
@@ -298,6 +310,9 @@ class Ui_MainWindow(QtWidgets.QWidget):
 
         Keycodes are simplified to either a char, if available, or the key name
         # TODO look into vk implementation, is it a larger set?
+        # TODO currently have to write in the vk code as a separate entry
+        # This is because when loading macros not all fields of a Key are
+        # automatically filled if we pass in a char, or vk, by itself
 
         :return: None
         """
@@ -332,7 +347,9 @@ class Ui_MainWindow(QtWidgets.QWidget):
 
         :return: None
         """
-        print("Unimplemented program")
+        print("Partially implemented program")
+
+        macro_language_parse.create_macro_string(self.macros)
 
     def select_keyboard_button(self, key_button):
         """

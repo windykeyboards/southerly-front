@@ -91,7 +91,13 @@ def masking_dict():
         for line in f.readlines():
             temp_str = re.sub(r'[\ ]+', ' ', line)
             string_part = temp_str.split(' ')
-            hex_dict[string_part[1]] = hex(int(string_part[3], 16) + int(string_part[5], 16))
+            if 'x' in string_part[3]:
+                hex_dict[string_part[1]] = hex(int(string_part[3], 16) + int(string_part[5], 16))
+                # Have to convert two hex numbers
+            else:
+                hex_dict[string_part[1]] = hex(int(string_part[3]) + int(string_part[5], 16))
+                # First number is an integer in base 10 already
+
 
     for key in mask_dict.keys():
         if mask_dict[key][0] == 'None':

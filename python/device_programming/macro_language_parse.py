@@ -59,7 +59,8 @@ def create_macro_string(key_events):
                 macro_string += mod_key + hex_code + '\n'
             print(macro_string)
     except:
-        print('Ruh Roh')
+        print('Unable to parse macro to macro string\nPossible Issues:\n')
+        print('\tUnknown key code\n\tcorrupted key event dictionary\n\thex key code dictionary incomplete')
 
 
 def masking_dict():

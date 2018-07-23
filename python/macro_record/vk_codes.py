@@ -27,7 +27,7 @@ def print_key(key):
 def return_only(key):
     """
     The listener requires a function, but we don't need the releases
-d    """
+    """
     return
 
 

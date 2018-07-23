@@ -1,0 +1,710 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   sodipodi:docname="layout.svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1"
+     inkscape:cx="373.06872"
+     inkscape:cy="460.14664"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:snap-text-baseline="false"
+     inkscape:measure-start="0,0"
+     inkscape:measure-end="0,0"
+     showguides="false"
+     inkscape:guide-bbox="true"
+     inkscape:window-width="1920"
+     inkscape:window-height="1057"
+     inkscape:window-x="-8"
+     inkscape:window-y="573"
+     inkscape:window-maximized="1">
+    <sodipodi:guide
+       position="204.20728,222.54197"
+       orientation="0,1"
+       id="guide4907"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="120,250"
+       orientation="0,1"
+       id="guide4909"
+       inkscape:locked="false"
+       inkscape:label=""
+       inkscape:color="rgb(0,0,255)" />
+    <sodipodi:guide
+       position="110,276.61061"
+       orientation="1,0"
+       id="guide4911"
+       inkscape:locked="false"
+       inkscape:label=""
+       inkscape:color="rgb(0,0,255)" />
+    <sodipodi:guide
+       position="155,285.40377"
+       orientation="1,0"
+       id="guide4913"
+       inkscape:locked="false"
+       inkscape:label=""
+       inkscape:color="rgb(0,0,255)" />
+    <sodipodi:guide
+       position="200.14714,285.07485"
+       orientation="1,0"
+       id="guide4915"
+       inkscape:locked="false" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       id="rect3713-6"
+       width="90"
+       height="55.59206"
+       x="50.465855"
+       y="24.834267"
+       style="fill:#450000;fill-opacity:0.14070351;stroke-width:0.2668671" />
+    <rect
+       style="fill:#000000;fill-opacity:0.59798997;stroke-width:0.28089887"
+       id="rect4647-8-73"
+       width="25"
+       height="6.4606743"
+       x="82.965858"
+       y="38.457623" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:3.52777767px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="85.61657"
+       y="43.027462"
+       id="text4651-3-3"><tspan
+         sodipodi:role="line"
+         id="tspan4649-2-1"
+         x="85.61657"
+         y="43.027462"
+         style="stroke-width:0.26458332">Save config</tspan></text>
+    <rect
+       style="fill:#000000;fill-opacity:0.59798997;stroke-width:0.26458332"
+       id="rect4647-8-7-2"
+       width="23.547916"
+       height="6.0854168"
+       x="111.70522"
+       y="38.457623" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:3.52777767px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="113.32926"
+       y="43.010239"
+       id="text4703-9"><tspan
+         sodipodi:role="line"
+         id="tspan4701-4"
+         x="113.32926"
+         y="43.010239"
+         style="stroke-width:0.26458332">Prog device</tspan></text>
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot4711-9"
+       style="font-style:normal;font-weight:normal;font-size:13.33333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       transform="matrix(0.26458333,0,0,0.26458333,43.743825,12.992049)"><flowRegion
+         id="flowRegion4713-8"><rect
+           id="rect4715-5"
+           width="82.5"
+           height="20.5"
+           x="269.5"
+           y="74.519684" /></flowRegion><flowPara
+         id="flowPara4717-7">Playback</flowPara></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot4711-1-8"
+       style="font-style:normal;font-weight:normal;font-size:13.33333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       transform="matrix(0.26458333,0,0,0.26458333,43.490435,7.5838882)"><flowRegion
+         id="flowRegion4713-6-3"><rect
+           id="rect4715-1-5"
+           width="82.5"
+           height="20.5"
+           x="269.5"
+           y="74.519684" /></flowRegion><flowPara
+         id="flowPara4717-9-1">Record</flowPara></flowRoot>    <rect
+       style="fill:#66a4bb;fill-opacity:0.31555559;stroke-width:0.26458332"
+       id="rect4749-5"
+       width="15.019498"
+       height="3.3703425"
+       x="114.12301"
+       y="27.61858" />
+    <rect
+       style="fill:#66a4bb;fill-opacity:0.31555559;stroke-width:0.32952031"
+       id="rect4749-6-9"
+       width="18.855957"
+       height="4.1640925"
+       x="113.72614"
+       y="32.44413" />
+    <rect
+       style="fill:#000000;fill-opacity:0.59798997;stroke-width:0.18099052;paint-order:markers fill stroke"
+       id="rect4521-4-7"
+       width="17.840494"
+       height="12.152221"
+       x="86.784966"
+       y="-59.909119"
+       transform="scale(1,-1)" />
+    <rect
+       style="fill:#000000;fill-opacity:0.59798997;stroke-width:0.18099052;paint-order:stroke markers fill"
+       id="rect4521-42-5"
+       width="17.840494"
+       height="12.152221"
+       x="111.8375"
+       y="-59.909119"
+       transform="scale(1,-1)" />
+    <g
+       style="paint-order:markers fill stroke"
+       id="g4570-0"
+       transform="translate(39.979512,11.139965)">
+      <rect
+         transform="scale(1,-1)"
+         y="-64.538055"
+         x="46.805447"
+         height="12.152221"
+         width="17.840494"
+         id="rect4521-4-4-2"
+         style="fill:#000000;fill-opacity:0.59798997;stroke-width:0.18099052;paint-order:markers fill stroke" />
+      <rect
+         transform="scale(1,-1)"
+         y="-64.538055"
+         x="71.857979"
+         height="12.152221"
+         width="17.840494"
+         id="rect4521-42-1-3"
+         style="fill:#000000;fill-opacity:0.59798997;stroke-width:0.18099052;paint-order:markers fill stroke" />
+      <rect
+         transform="scale(1,-1)"
+         y="-64.538055"
+         x="21.752916"
+         height="12.152221"
+         width="17.840494"
+         id="rect4521-3-0"
+         style="fill:#000000;fill-opacity:0.59798997;stroke-width:0.18099052;paint-order:markers fill stroke" />
+    </g>
+    <rect
+       style="fill:#000000;fill-opacity:0.21777781;stroke-width:0.18099052;paint-order:markers fill stroke"
+       id="rect4521-44"
+       width="17.840494"
+       height="12.152221"
+       x="61.732426"
+       y="-59.909119"
+       transform="scale(1,-1)" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.93888855px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="64.127335"
+       y="55.31551"
+       id="text4589-15"><tspan
+         sodipodi:role="line"
+         x="64.127335"
+         y="55.31551"
+         style="stroke-width:0.26458332"
+         id="tspan4591-52">Key 1</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.93888855px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="88.627007"
+       y="55.19112"
+       id="text4589-3-1"><tspan
+         sodipodi:role="line"
+         x="88.627007"
+         y="55.19112"
+         style="stroke-width:0.26458332"
+         id="tspan4591-3-1">Key 2</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.93888855px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="113.33167"
+       y="55.284664"
+       id="text4589-5-3"><tspan
+         sodipodi:role="line"
+         x="113.33167"
+         y="55.284664"
+         style="stroke-width:0.26458332"
+         id="tspan4591-2-5">Key 3</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.93888855px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="64.127335"
+       y="70.745499"
+       id="text4589-55-8"><tspan
+         sodipodi:role="line"
+         x="64.127335"
+         y="70.745499"
+         style="stroke-width:0.26458332"
+         id="tspan4591-7-5">Key 4</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.93888855px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="88.784981"
+       y="70.745499"
+       id="text4589-2-8"><tspan
+         sodipodi:role="line"
+         x="88.784981"
+         y="70.745499"
+         style="stroke-width:0.26458332"
+         id="tspan4591-5-6">Key 5</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.93888855px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="113.33169"
+       y="70.813026"
+       id="text4589-1-3"><tspan
+         sodipodi:role="line"
+         x="113.33169"
+         y="70.813026"
+         style="stroke-width:0.26458332"
+         id="tspan4591-0-5">Key 6</tspan></text>
+    <rect
+       style="fill:#000000;fill-opacity:0.59798997;stroke-width:0.26458332"
+       id="rect4647-6"
+       width="23.547916"
+       height="6.0854168"
+       x="56.046955"
+       y="38.457623" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:3.52777767px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="58.031338"
+       y="43.027462"
+       id="text4651-5"><tspan
+         sodipodi:role="line"
+         id="tspan4649-9"
+         x="58.031338"
+         y="43.027462"
+         style="stroke-width:0.26458332">Load config</tspan></text>
+    <rect
+       style="fill:#2d3353;fill-opacity:0.31111115;stroke-width:0.1620294"
+       id="rect4705-7"
+       width="49.344791"
+       height="4.8947911"
+       x="55.782368"
+       y="30.327467" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:3.52777767px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="57.105274"
+       y="33.767048"
+       id="text4709-4"><tspan
+         sodipodi:role="line"
+         id="tspan4707-7"
+         x="57.105274"
+         y="33.767048"
+         style="stroke-width:0.26458332">Current macro/key combo</tspan></text>
+    <rect
+       id="rect3713-6-0"
+       width="90"
+       height="55.59206"
+       x="50.415218"
+       y="90.347206"
+       style="fill:#450000;fill-opacity:0.14070351;stroke-width:0.2668671" />
+    <rect
+       style="fill:#000000;fill-opacity:0.59798997;stroke-width:0.28089887"
+       id="rect4647-8-73-4"
+       width="25"
+       height="6.4606743"
+       x="82.915222"
+       y="103.97056" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:3.52777767px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="85.565948"
+       y="108.5404"
+       id="text4651-3-3-0"><tspan
+         sodipodi:role="line"
+         id="tspan4649-2-1-1"
+         x="85.565948"
+         y="108.5404"
+         style="stroke-width:0.26458332">Save config</tspan></text>
+    <rect
+       style="fill:#000000;fill-opacity:0.59798997;stroke-width:0.26458332"
+       id="rect4647-8-7-2-4"
+       width="23.547916"
+       height="6.0854168"
+       x="111.65459"
+       y="103.97056" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:3.52777767px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="113.27863"
+       y="108.52318"
+       id="text4703-9-2"><tspan
+         sodipodi:role="line"
+         id="tspan4701-4-9"
+         x="113.27863"
+         y="108.52318"
+         style="stroke-width:0.26458332">Prog device</tspan></text>
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot4711-9-7"
+       style="font-style:normal;font-weight:normal;font-size:13.33333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       transform="matrix(0.26458333,0,0,0.26458333,43.693191,78.504984)"><flowRegion
+         id="flowRegion4713-8-9"><rect
+           id="rect4715-5-5"
+           width="82.5"
+           height="20.5"
+           x="269.5"
+           y="74.519684" /></flowRegion><flowPara
+         id="flowPara4717-7-0">Playback</flowPara></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot4711-1-8-7"
+       style="font-style:normal;font-weight:normal;font-size:13.33333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       transform="matrix(0.26458333,0,0,0.26458333,-9.07999,78.256197)"><flowRegion
+         id="flowRegion4713-6-3-2"><rect
+           id="rect4715-1-5-4"
+           width="82.5"
+           height="20.5"
+           x="269.5"
+           y="74.519684" /></flowRegion><flowPara
+         id="flowPara4717-9-1-6">Record</flowPara></flowRoot>    <rect
+       style="fill:#66a4bb;fill-opacity:0.31555559;stroke-width:0.26458332"
+       id="rect4749-5-0"
+       width="15.019498"
+       height="3.3703425"
+       x="60.423702"
+       y="98.351257" />
+    <rect
+       style="fill:#66a4bb;fill-opacity:0.31555559;stroke-width:0.32952031"
+       id="rect4749-6-9-2"
+       width="18.855957"
+       height="4.1640925"
+       x="113.67551"
+       y="97.957069" />
+    <rect
+       style="fill:#000000;fill-opacity:0.59798997;stroke-width:0.18099052;paint-order:markers fill stroke"
+       id="rect4521-4-7-1"
+       width="17.840494"
+       height="12.152221"
+       x="86.734344"
+       y="-125.42206"
+       transform="scale(1,-1)" />
+    <rect
+       style="fill:#000000;fill-opacity:0.59798997;stroke-width:0.18099052;paint-order:stroke markers fill"
+       id="rect4521-42-5-1"
+       width="17.840494"
+       height="12.152221"
+       x="111.78687"
+       y="-125.42206"
+       transform="scale(1,-1)" />
+    <g
+       style="paint-order:markers fill stroke"
+       id="g4570-0-5"
+       transform="translate(39.92888,76.6529)">
+      <rect
+         transform="scale(1,-1)"
+         y="-64.538055"
+         x="46.805447"
+         height="12.152221"
+         width="17.840494"
+         id="rect4521-4-4-2-6"
+         style="fill:#000000;fill-opacity:0.59798997;stroke-width:0.18099052;paint-order:markers fill stroke" />
+      <rect
+         transform="scale(1,-1)"
+         y="-64.538055"
+         x="71.857979"
+         height="12.152221"
+         width="17.840494"
+         id="rect4521-42-1-3-6"
+         style="fill:#000000;fill-opacity:0.59798997;stroke-width:0.18099052;paint-order:markers fill stroke" />
+      <rect
+         transform="scale(1,-1)"
+         y="-64.538055"
+         x="21.752916"
+         height="12.152221"
+         width="17.840494"
+         id="rect4521-3-0-5"
+         style="fill:#000000;fill-opacity:0.59798997;stroke-width:0.18099052;paint-order:markers fill stroke" />
+    </g>
+    <rect
+       style="fill:#000000;fill-opacity:0.21777781;stroke-width:0.18099052;paint-order:markers fill stroke"
+       id="rect4521-44-3"
+       width="17.840494"
+       height="12.152221"
+       x="61.681789"
+       y="-125.42206"
+       transform="scale(1,-1)" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.93888855px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="64.076706"
+       y="120.82845"
+       id="text4589-15-7"><tspan
+         sodipodi:role="line"
+         x="64.076706"
+         y="120.82845"
+         style="stroke-width:0.26458332"
+         id="tspan4591-52-5">Key 1</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.93888855px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="88.57637"
+       y="120.70406"
+       id="text4589-3-1-5"><tspan
+         sodipodi:role="line"
+         x="88.57637"
+         y="120.70406"
+         style="stroke-width:0.26458332"
+         id="tspan4591-3-1-6">Key 2</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.93888855px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="113.28104"
+       y="120.7976"
+       id="text4589-5-3-0"><tspan
+         sodipodi:role="line"
+         x="113.28104"
+         y="120.7976"
+         style="stroke-width:0.26458332"
+         id="tspan4591-2-5-2">Key 3</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.93888855px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="64.076706"
+       y="136.25844"
+       id="text4589-55-8-2"><tspan
+         sodipodi:role="line"
+         x="64.076706"
+         y="136.25844"
+         style="stroke-width:0.26458332"
+         id="tspan4591-7-5-3">Key 4</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.93888855px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="88.73436"
+       y="136.25844"
+       id="text4589-2-8-6"><tspan
+         sodipodi:role="line"
+         x="88.73436"
+         y="136.25844"
+         style="stroke-width:0.26458332"
+         id="tspan4591-5-6-8">Key 5</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.93888855px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="113.28105"
+       y="136.32596"
+       id="text4589-1-3-5"><tspan
+         sodipodi:role="line"
+         x="113.28105"
+         y="136.32596"
+         style="stroke-width:0.26458332"
+         id="tspan4591-0-5-0">Key 6</tspan></text>
+    <rect
+       style="fill:#000000;fill-opacity:0.59798997;stroke-width:0.26458332"
+       id="rect4647-6-5"
+       width="23.547916"
+       height="6.0854168"
+       x="55.996326"
+       y="103.97056" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:3.52777767px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="57.980701"
+       y="108.5404"
+       id="text4651-5-9"><tspan
+         sodipodi:role="line"
+         id="tspan4649-9-9"
+         x="57.980701"
+         y="108.5404"
+         style="stroke-width:0.26458332">Load config</tspan></text>
+    <rect
+       style="fill:#2d3353;fill-opacity:0.31111115;stroke-width:0.20222157"
+       id="rect4705-7-2"
+       width="76.861458"
+       height="4.8947911"
+       x="57.716106"
+       y="91.871658" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:3.52777767px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="72.665047"
+       y="95.575813"
+       id="text4709-4-4"><tspan
+         sodipodi:role="line"
+         id="tspan4707-7-5"
+         x="72.665047"
+         y="95.575813"
+         style="stroke-width:0.26458332">Current macro/key combo</tspan></text>
+    <rect
+       style="fill:#66a4bb;fill-opacity:0.31555559;stroke-width:0.32952031"
+       id="rect4749-6-9-2-4"
+       width="18.855957"
+       height="4.1640925"
+       x="85.822021"
+       y="98.067955" />
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot4711-9-7-9"
+       style="font-style:normal;font-weight:normal;font-size:13.33333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       transform="matrix(0.26458333,0,0,0.26458333,14.913665,78.204675)"><flowRegion
+         id="flowRegion4713-8-9-6"><rect
+           id="rect4715-5-5-0"
+           width="82.5"
+           height="20.5"
+           x="269.5"
+           y="74.519684" /></flowRegion><flowPara
+         id="flowPara4717-7-0-6">Edit macro</flowPara></flowRoot>    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 104.67798,98.067955 c 54.90865,0 55.46992,0 55.46992,0"
+       id="path5165"
+       inkscape:connector-curvature="0" />
+    <rect
+       id="rect3713-6-0-0"
+       width="32.980206"
+       height="20.371529"
+       x="160.25157"
+       y="87.847572"
+       style="fill:#450000;fill-opacity:0.14070351;stroke-width:0.09779257" />
+    <rect
+       style="fill:#2d3353;fill-opacity:0.31111115;stroke-width:0.08003134"
+       id="rect4705-7-2-1"
+       width="12.038542"
+       height="4.8947911"
+       x="163.31407"
+       y="89.632812" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:3.52777767px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="165.49687"
+       y="93.270836"
+       id="text5199"><tspan
+         sodipodi:role="line"
+         id="tspan5197"
+         x="165.49687"
+         y="93.270836"
+         style="stroke-width:0.26458332">time</tspan></text>
+    <rect
+       style="fill:#2d3353;fill-opacity:0.31111115;stroke-width:0.08003134"
+       id="rect4705-7-2-1-7"
+       width="12.038542"
+       height="4.8947911"
+       x="178.39532"
+       y="89.632812" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:3.52777767px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="180.57812"
+       y="93.270836"
+       id="text5199-2"><tspan
+         sodipodi:role="line"
+         id="tspan5197-7"
+         x="180.57812"
+         y="93.270836"
+         style="stroke-width:0.26458332">time</tspan></text>
+    <rect
+       style="fill:#2d3353;fill-opacity:0.31111115;stroke-width:0.08003134"
+       id="rect4705-7-2-1-6"
+       width="12.038542"
+       height="4.8947911"
+       x="163.31406"
+       y="99.02552" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:3.52777767px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="164.49194"
+       y="102.87387"
+       id="text5199-7"><tspan
+         sodipodi:role="line"
+         id="tspan5197-8"
+         x="164.49194"
+         y="102.87387"
+         style="stroke-width:0.26458332">Name</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:3.52777767px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="41.539581"
+       y="170.52917"
+       id="text928"><tspan
+         sodipodi:role="line"
+         id="tspan926"
+         x="41.539581"
+         y="170.52917"
+         style="stroke-width:0.26458332">Open config</tspan><tspan
+         sodipodi:role="line"
+         x="41.539581"
+         y="174.9389"
+         style="stroke-width:0.26458332"
+         id="tspan930">- Optional settings (escape sequence, colours, keyboard/mouse)</tspan><tspan
+         sodipodi:role="line"
+         x="41.539581"
+         y="179.34862"
+         style="stroke-width:0.26458332"
+         id="tspan936" /><tspan
+         sodipodi:role="line"
+         x="41.539581"
+         y="183.75835"
+         style="stroke-width:0.26458332"
+         id="tspan938">Programming:</tspan><tspan
+         sodipodi:role="line"
+         x="41.539581"
+         y="188.16806"
+         style="stroke-width:0.26458332"
+         id="tspan932">- Select button to program</tspan><tspan
+         sodipodi:role="line"
+         x="41.539581"
+         y="192.57779"
+         style="stroke-width:0.26458332"
+         id="tspan934">    - Shows current macro on key</tspan><tspan
+         sodipodi:role="line"
+         x="41.539581"
+         y="196.9875"
+         style="stroke-width:0.26458332"
+         id="tspan940">    - Begin recording macro</tspan><tspan
+         sodipodi:role="line"
+         x="41.539581"
+         y="201.39723"
+         style="stroke-width:0.26458332"
+         id="tspan942">    - Show macro</tspan><tspan
+         sodipodi:role="line"
+         x="41.539581"
+         y="205.80695"
+         style="stroke-width:0.26458332"
+         id="tspan944">    - Optionally playback macro, and/or name macro</tspan><tspan
+         sodipodi:role="line"
+         x="41.539581"
+         y="210.21667"
+         style="stroke-width:0.26458332"
+         id="tspan948">    - Edit macro as needed (could just re-record)</tspan><tspan
+         sodipodi:role="line"
+         x="41.539581"
+         y="214.62639"
+         style="stroke-width:0.26458332"
+         id="tspan946">    - Assign key to macro</tspan></text>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Keys" />
+</svg>

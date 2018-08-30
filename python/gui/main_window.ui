@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>499</width>
-    <height>529</height>
+    <width>525</width>
+    <height>531</height>
    </rect>
   </property>
   <property name="baseSize">
@@ -20,12 +20,18 @@
    <string>WindyM1</string>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="minimumSize">
+    <size>
+     <width>525</width>
+     <height>490</height>
+    </size>
+   </property>
    <widget class="QWidget" name="verticalLayoutWidget">
     <property name="geometry">
      <rect>
       <x>40</x>
       <y>10</y>
-      <width>431</width>
+      <width>448</width>
       <height>413</height>
      </rect>
     </property>
@@ -43,13 +49,13 @@
         <widget class="QLabel" name="macro_name_label">
          <property name="minimumSize">
           <size>
-           <width>300</width>
+           <width>320</width>
            <height>0</height>
           </size>
          </property>
          <property name="maximumSize">
           <size>
-           <width>16777215</width>
+           <width>320</width>
            <height>30</height>
           </size>
          </property>
@@ -85,6 +91,12 @@
        </item>
        <item>
         <widget class="QPushButton" name="macro_name_btn">
+         <property name="minimumSize">
+          <size>
+           <width>100</width>
+           <height>0</height>
+          </size>
+         </property>
          <property name="maximumSize">
           <size>
            <width>100</width>
@@ -104,7 +116,13 @@
         <widget class="QLabel" name="macro_string_label">
          <property name="minimumSize">
           <size>
-           <width>300</width>
+           <width>320</width>
+           <height>40</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>320</width>
            <height>40</height>
           </size>
          </property>
@@ -119,6 +137,9 @@
          </property>
          <property name="text">
           <string>- recorded macro string -</string>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
          </property>
         </widget>
        </item>
@@ -144,7 +165,7 @@
           <widget class="QPushButton" name="record_macro_btn">
            <property name="minimumSize">
             <size>
-             <width>10</width>
+             <width>100</width>
              <height>0</height>
             </size>
            </property>
@@ -161,6 +182,12 @@
          </item>
          <item>
           <widget class="QPushButton" name="playback_macro_btn">
+           <property name="minimumSize">
+            <size>
+             <width>100</width>
+             <height>0</height>
+            </size>
+           </property>
            <property name="maximumSize">
             <size>
              <width>100</width>
@@ -368,7 +395,7 @@
      <rect>
       <x>40</x>
       <y>420</y>
-      <width>429</width>
+      <width>451</width>
       <height>56</height>
      </rect>
     </property>
@@ -414,7 +441,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>499</width>
+     <width>525</width>
      <height>21</height>
     </rect>
    </property>

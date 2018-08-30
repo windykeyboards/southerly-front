@@ -57,7 +57,6 @@ class Ui_MainWindow(QtWidgets.QWidget):
         self.ui.load_macro_btn.setText("Load Macro")
         self.ui.load_macro_btn.clicked.connect(self.load_macro)
 
-
         self.ui.program_device_btn.setText("Program Device")
         self.ui.program_device_btn.clicked.connect(self.program_device)
 
@@ -77,7 +76,6 @@ class Ui_MainWindow(QtWidgets.QWidget):
         self.ui.keycap_three_btn.setText("PushButton")
         self.ui.keycap_three_btn.clicked.connect(lambda: self.select_keyboard_button(3))
 
-
         self.ui.keycap_four_btn.setMinimumSize(QtCore.QSize(100, 100))
         self.ui.keycap_four_btn.setText("PushButton")
         self.ui.keycap_four_btn.clicked.connect(lambda: self.select_keyboard_button(4))
@@ -89,7 +87,6 @@ class Ui_MainWindow(QtWidgets.QWidget):
         self.ui.keycap_six_btn.setMinimumSize(QtCore.QSize(100, 100))
         self.ui.keycap_six_btn.setText("PushButton")
         self.ui.keycap_six_btn.clicked.connect(lambda: self.select_keyboard_button(6))
-
 
         '''
         Setup Main Window
@@ -106,11 +103,15 @@ class Ui_MainWindow(QtWidgets.QWidget):
 
         :return: None
         """
-        text, pressed = QtWidgets.QInputDialog.getText(self, "Label Macro", "Macro Name:",
-                                                       QtWidgets.QLineEdit.Normal, "")
-        if pressed and text != '':
-            self.ui.macro_name_label.setText(text)
-            self.macros[self.selected_key]['name'] = text
+
+        if self.selected_key in self.macros.keys():
+            text, pressed = QtWidgets.QInputDialog.getText(self, "Label Macro", "Macro Name:",
+                                                           QtWidgets.QLineEdit.Normal, "")
+            if pressed and text != '':
+                self.macros[self.selected_key]['name'] = text
+                self.ui.macro_name_label.setText(text)
+        else:
+             QtWidgets.QMessageBox.critical(self, "No Macro to name", "Please record a macro first to name it")
 
     def record_macro(self):
         """
@@ -139,8 +140,8 @@ class Ui_MainWindow(QtWidgets.QWidget):
             else:
                 recorded_input[key].append(temp_key.value.vk)
 
-        self.set_stylesheet(self.record_macro_btn, '')
-        self.record_macro_btn.setText("Record Macro")
+        self.set_stylesheet(self.ui.record_macro_btn, '')
+        self.ui.record_macro_btn.setText("Record Macro")
 
         self.macros[self.selected_key] = {}
         self.macros[self.selected_key]['key_events'] = recorded_input
@@ -157,7 +158,7 @@ class Ui_MainWindow(QtWidgets.QWidget):
         :return: None
         """
         if self.selected_key in self.macros.keys():
-            self.set_stylesheet(self.playback_macro_btn, 'background-color:#FF0000;')
+            self.set_stylesheet(self.ui.playback_macro_btn, 'background-color:#FF0000;')
             self.ui.playback_macro_btn.setText('PLAYBACK')
             self.ui.playback_macro_btn.repaint()
 
@@ -229,6 +230,7 @@ class Ui_MainWindow(QtWidgets.QWidget):
                                                     filter='*.json')
         if save_file_path[0] == '':
             return
+
         class KeyCodeEncoder(json.JSONEncoder):
             def default(self, obj):
                 # Extract the useful info from the keys, nothing more

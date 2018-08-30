@@ -20,7 +20,7 @@ r,E001
 """
 
 import re
-from pkg_resources import resource_filename # to read the text files in the module
+from pkg_resources import resource_filename  # to read the text files in the module
 
 
 def get_vk(key):
@@ -32,8 +32,8 @@ def get_vk(key):
     else:
         return key.vk
 
-def create_macro_string(key_events):
 
+def create_macro_string(key_events):
     mask_dict = masking_dict()
 
     try:
@@ -41,8 +41,8 @@ def create_macro_string(key_events):
             macro_string = ''
             prev_time = 0
             for time_key in sorted(key_events[button_num]['key_events'].keys()):
-                wait_time = float(time_key)*1000 - prev_time
-                prev_time = float(time_key)*1000
+                wait_time = float(time_key) * 1000 - prev_time
+                prev_time = float(time_key) * 1000
                 key_action = key_events[button_num]['key_events'][time_key][0]
                 mod_key = 'p,'
                 if key_action == 'release':
@@ -84,7 +84,7 @@ def masking_dict():
     with open(vk_map, 'r') as f:
         for line in f.readlines():
             temp_str = re.sub(r'[\ ]+', ' ', line)
-            temp_str = re.sub(r'\n','', temp_str)
+            temp_str = re.sub(r'\n', '', temp_str)
             mask_dict[int(temp_str.split(' ')[0])] = [temp_str.split(' ')[1]]
 
     hex_dict = {}
@@ -99,7 +99,6 @@ def masking_dict():
                 hex_dict[string_part[1]] = hex(int(string_part[3]) + int(string_part[5], 16))
                 # First number is an integer in base 10 already
 
-
     for key in mask_dict.keys():
         if mask_dict[key][0] == 'None':
             mask_dict[key].append('None')
@@ -107,5 +106,6 @@ def masking_dict():
         mask_dict[key].append(hex_dict[mask_dict[key][0]])
 
     return mask_dict
+
 
 masking_dict()

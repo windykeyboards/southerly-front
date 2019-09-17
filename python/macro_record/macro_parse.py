@@ -1,37 +1,40 @@
 from python.macro_record import keyboard_interface
 
-
-# TODO parse through events, finding relative timings
-# Then allows the user options of:
+# TODO allows the user options of:
 # - playback
 # - reduction of timing, either by a factor or as fast as possible
 
-def parse_timings(events):
-    relative_times = {}
-    start_time = sorted(events.keys())[0]
-    for dict_key in sorted(events.keys()):
-        new_key = dict_key - start_time
-        relative_times[new_key] = events[dict_key]
-
-    return relative_times
-
-
-def alter_timing(events, percent):
-    new_timings = {}
-    for dict_key in sorted(events.keys()):
-        new_timings[dict_key * percent] = events[dict_key]
-
-    return new_timings
-
 def listen_to_keyboard():
+    """
+    Listen to keyboard strokes
+    :return: parsed keyboard strokes, a list of Keyboard Events
+    """
     to_parse = keyboard_interface.listen('')
-    parsed = parse_timings(to_parse)
+    return parse_timings(to_parse)
 
-    # Have to remove the key which terminated the recorded sequence
-    for key in sorted(parsed.keys(), reverse=True):
-        del parsed[key]
-        break
-    return parsed
+
+def parse_timings(keyboard_strokes):
+    """
+    Sanitise the keyboard strokes by making the first event start at 0 seconds
+    Remove the keystroke that is used to terminate the sequence
+
+    :param keyboard_strokes:    list of keyboard Events
+    :return:                    list of keyboard events
+    """
+    zeroed_events = []
+    start_time = 0
+    for event in keyboard_strokes:
+        if start_time == 0:
+            start_time = event.time
+        zeroed_events.append(event)
+        zeroed_events[-1].time = 0  - start_time
+
+    # TODO make this user configurable as required
+    del(zeroed_events[-1])
+
+    return zeroed_events
+
 
 def execute_recording(key_events):
+    # Pass on events to the keyboard interface to play it back
     keyboard_interface.execute(key_events)

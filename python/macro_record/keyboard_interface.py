@@ -1,6 +1,4 @@
-import time
-import sched
-#from pynput.keyboard import Key, Listener, Controller
+
 import keyboard as keyboard
 
 # TODO enable a customisable exit recording sequence

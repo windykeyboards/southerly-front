@@ -131,15 +131,7 @@ class Ui_MainWindow(QtWidgets.QWidget):
 
         recorded_input = macro_parse.listen_to_keyboard()
 
-        # bug fix, to remove
-        # Add the vk into the list of recorded_input for later save/load of macro
-        for key in recorded_input.keys():
-            temp_key = recorded_input[key][1]
-            if isinstance(temp_key, KeyCode):
-                recorded_input[key].append(temp_key.vk)
-            else:
-                recorded_input[key].append(temp_key.value.vk)
-
+        # Save the recorded keyboard presses
         self.set_stylesheet(self.ui.record_macro_btn, '')
         self.ui.record_macro_btn.setText("Record Macro")
 
@@ -147,7 +139,7 @@ class Ui_MainWindow(QtWidgets.QWidget):
         self.macros[self.selected_key]['key_events'] = recorded_input
         self.macros[self.selected_key]['name'] = self.ui.macro_name_label.text()
 
-        temp_str = self.parse_macro_to_string(recorded_input)
+        temp_str = macro_parse.parse_to_string(recorded_input)
         self.ui.macro_string_label.setText(temp_str)
 
     def playback_macro(self):
@@ -300,29 +292,10 @@ class Ui_MainWindow(QtWidgets.QWidget):
 
         if self.selected_key in self.macros.keys():
             self.ui.macro_name_label.setText(self.macros[self.selected_key]['name'])
-            self.ui.macro_string_label.setText(self.parse_macro_to_string(self.macros[self.selected_key]['key_events']))
+            self.ui.macro_string_label.setText(macro_parse.parse_to_string(self.macros[self.selected_key]['key_events']))
         else:
             self.ui.macro_name_label.setText("- recorded macro name -")
             self.ui.macro_string_label.setText("- recorded macro string -")
-
-    def parse_macro_to_string(self, macro_dict):
-        """
-        Used to set labels for the user, shows which keys were recorded
-
-        :param macro_dict: Dictionary of timings to key actions
-        :return:    String of concatenated keypresses
-        """
-        temp_str = ''
-        for key in macro_dict.keys():
-            try:
-                temp_str = temp_str + macro_dict[key][0] + \
-                           ' ' + macro_dict[key][1].name + '; '
-            except:
-                temp_str = temp_str + macro_dict[key][0] + \
-                           ' ' + macro_dict[key][1].char + '; '
-
-        temp_str = re.sub(r'press|release', '', temp_str)
-        return temp_str
 
     def set_stylesheet(self, object, style_string):
         object.setStyleSheet(style_string)

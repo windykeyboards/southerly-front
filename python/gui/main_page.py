@@ -38,6 +38,7 @@ class Ui_MainWindow(QtWidgets.QWidget):
         self.ui.macro_name_btn.setMaximumSize(QtCore.QSize(100, 16777215))
         self.ui.macro_name_btn.setText("Name macro")
         self.ui.macro_name_btn.clicked.connect(self.label_macro)
+        self.ui.macro_name_btn.setShortcut('alt+n')
 
         self.ui.macro_string_label.setMinimumSize(QtCore.QSize(0, 40))
         self.ui.macro_string_label.setAutoFillBackground(False)
@@ -47,15 +48,19 @@ class Ui_MainWindow(QtWidgets.QWidget):
 
         self.ui.record_macro_btn.setText("Record Macro")
         self.ui.record_macro_btn.clicked.connect(self.record_macro)
+        self.ui.record_macro_btn.setShortcut('alt+r')
 
         self.ui.playback_macro_btn.setText("Playback Macro")
         self.ui.playback_macro_btn.clicked.connect(self.playback_macro)
+        self.ui.playback_macro_btn.setShortcut('alt+p')
 
         self.ui.save_macro_btn.setText("Save Macro")
         self.ui.save_macro_btn.clicked.connect(self.save_macro)
+        self.ui.save_macro_btn.setShortcut('alt+s')
 
         self.ui.load_macro_btn.setText("Load Macro")
         self.ui.load_macro_btn.clicked.connect(self.load_macro)
+        self.ui.load_macro_btn.setShortcut('alt+l')
 
         self.ui.program_device_btn.setText("Program Device")
         self.ui.program_device_btn.clicked.connect(self.program_device)
@@ -134,6 +139,7 @@ class Ui_MainWindow(QtWidgets.QWidget):
         # Save the recorded keyboard presses
         self.set_stylesheet(self.ui.record_macro_btn, '')
         self.ui.record_macro_btn.setText("Record Macro")
+        self.ui.record_macro_btn.setShortcut('alt+r')
 
         self.macros[self.selected_key] = {}
         self.macros[self.selected_key]['key_events'] = recorded_input
@@ -157,6 +163,7 @@ class Ui_MainWindow(QtWidgets.QWidget):
             macro_parse.execute_recording(self.macros[self.selected_key]['key_events'])
             self.set_stylesheet(self.ui.playback_macro_btn, '')
             self.ui.playback_macro_btn.setText("Playback Macro")
+            self.ui.playback_macro_btn.setShortcut('alt+p')
 
     def load_macro(self):
         """
@@ -186,7 +193,7 @@ class Ui_MainWindow(QtWidgets.QWidget):
                     # Assign to a macro, as we know that the name assignment comes at the end
                     number_key = int(key_num)
                     self.macros[number_key] = {}
-                    self.macros[number_key]['name'] = key_events
+                    self.macros[number_key]['name'] = temp_dict[key_num]['name']
                     self.macros[number_key]['key_events'] = key_list
                     continue
                 for key_data_block in temp_dict[key_num][key_events]:

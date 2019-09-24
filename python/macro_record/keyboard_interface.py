@@ -1,4 +1,4 @@
-
+import time
 import keyboard as keyboard
 
 # TODO enable a customisable exit recording sequence
@@ -18,7 +18,19 @@ def listen(exit_condition):
 
     # Collect events until released
     # TODO use the passed exit condition
-    return keyboard.record(until=EXIT_COND)
+    start_time = time.clock()
+    keyboard.start_recording()
+    while True:
+        if keyboard.is_pressed('esc'):
+            recorded_keys = keyboard.stop_recording()
+            break
+        elif time.clock() - 30 > start_time:
+            recorded_keys = keyboard.stop_recording()
+            break
+
+    return recorded_keys
+
+    #return keyboard.record(until=EXIT_COND)
 
 
 def execute(macro, speedup=1):

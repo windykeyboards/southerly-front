@@ -8,7 +8,7 @@ import os
 import json
 from PyQt5 import QtCore, QtGui, QtWidgets, uic
 from python.macro_record import macro_parse
-from pynput.keyboard import KeyCode, Key
+from keyboard import KeyboardEvent
 from python.device_programming import macro_language_parse
 
 
@@ -178,26 +178,30 @@ class Ui_MainWindow(QtWidgets.QWidget):
             return
 
         temp_dict = json.load(open(load_file_path[0], 'r'))
+        key_dict = {}
         for key_num in temp_dict.keys():
+            key_list = []
             for key_events in temp_dict[key_num].keys():
                 if key_events == 'name':
+                    # Assign to a macro, as we know that the name assignment comes at the end
+                    number_key = int(key_num)
+                    self.macros[number_key] = {}
+                    self.macros[number_key]['name'] = key_events
+                    self.macros[number_key]['key_events'] = key_list
                     continue
-                for time_key in temp_dict[key_num][key_events]:
-                    key_code = temp_dict[key_num][key_events][time_key][1]
-                    if 'Key.' in key_code:
-                        temp_keycode = eval(key_code)
-                    else:
-                        temp_keycode = KeyCode.from_char(key_code)
-                        # Add in vk if it is missing (only the case for char keycodes)
-                        temp_keycode.vk = temp_dict[key_num][key_events][time_key][2]
-                    temp_dict[key_num][key_events][time_key][1] = temp_keycode
+                for key_data_block in temp_dict[key_num][key_events]:
+                    temp_key_event = KeyboardEvent
+                    temp_key_event.event_type = key_data_block["event_type"]
+                    temp_key_event.scan_code = key_data_block["scan_code"]
+                    temp_key_event.name = key_data_block["name"]
+                    temp_key_event.time = key_data_block["time"]
+                    temp_key_event.is_keypad = key_data_block["is_keypad"]
 
-        self.macros = {}
-        for key_num in temp_dict.keys():
-            # Integer key numbers get stored as strings
-            self.macros[int(key_num)] = temp_dict[key_num]
-            # And floats for timings are stored as strings also
-            self.macros[int(key_num)]['key_events'] = {float(k): v for k, v in temp_dict[key_num]['key_events'].items()}
+                    # Have to avoid copying over links of classes, and copy.deepcopy doesn't work
+                    added_key = type('KeyboardEvent', temp_key_event.__bases__, dict(temp_key_event.__dict__))
+                    key_list.append(added_key)
+
+
 
         self.select_keyboard_button(1)
 
@@ -226,10 +230,8 @@ class Ui_MainWindow(QtWidgets.QWidget):
         class KeyCodeEncoder(json.JSONEncoder):
             def default(self, obj):
                 # Extract the useful info from the keys, nothing more
-                if isinstance(obj, KeyCode):
-                    return obj.char
-                elif isinstance(obj, Key):
-                    return 'Key.' + obj.name
+                if isinstance(obj, KeyboardEvent):
+                    return json.loads(obj.to_json())
                 return json.JSONEncoder.default(self, obj)
 
         with open(save_file_path[0], 'w') as fp:

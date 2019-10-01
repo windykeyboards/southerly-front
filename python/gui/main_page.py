@@ -36,9 +36,10 @@ class Ui_MainWindow(QtWidgets.QWidget):
         self.ui.macro_name_label.setText("- recorded macro name -")
 
         self.ui.macro_name_btn.setMaximumSize(QtCore.QSize(100, 16777215))
-        self.ui.macro_name_btn.setText("Name macro")
+        self.ui.macro_name_btn.setText("&Name macro")
         self.ui.macro_name_btn.clicked.connect(self.label_macro)
         self.ui.macro_name_btn.setShortcut('alt+n')
+
 
         self.ui.macro_string_label.setMinimumSize(QtCore.QSize(0, 40))
         self.ui.macro_string_label.setAutoFillBackground(False)
@@ -46,19 +47,19 @@ class Ui_MainWindow(QtWidgets.QWidget):
         self.ui.macro_string_label.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.ui.macro_string_label.setText("- recorded macro string -")
 
-        self.ui.record_macro_btn.setText("Record Macro")
+        self.ui.record_macro_btn.setText("&Record Macro")
         self.ui.record_macro_btn.clicked.connect(self.record_macro)
         self.ui.record_macro_btn.setShortcut('alt+r')
 
-        self.ui.playback_macro_btn.setText("Playback Macro")
+        self.ui.playback_macro_btn.setText("&Playback Macro")
         self.ui.playback_macro_btn.clicked.connect(self.playback_macro)
         self.ui.playback_macro_btn.setShortcut('alt+p')
 
-        self.ui.save_macro_btn.setText("Save Macro")
+        self.ui.save_macro_btn.setText("&Save Macro")
         self.ui.save_macro_btn.clicked.connect(self.save_macro)
         self.ui.save_macro_btn.setShortcut('alt+s')
 
-        self.ui.load_macro_btn.setText("Load Macro")
+        self.ui.load_macro_btn.setText("&Load Macro")
         self.ui.load_macro_btn.clicked.connect(self.load_macro)
         self.ui.load_macro_btn.setShortcut('alt+l')
 

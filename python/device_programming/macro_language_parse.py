@@ -6,7 +6,7 @@ t - time, in ms to wait
 u - release, represents the release of a key
 
 Currently using the teensy library to interface with a machine
-As such the identifies of keys are masked hex as shown here:
+As such the identities of keys are masked hex as shown here:
 https://github.com/PaulStoffregen/cores/blob/master/teensy/keylayouts.h
 
 An example of the parsed events would be
@@ -23,16 +23,6 @@ import re
 from pkg_resources import resource_filename  # to read the text files in the module
 
 
-def get_vk(key):
-    """
-    Unique identifies of keys in pynput are the "virtual key" numbers
-    """
-    if hasattr(key, 'value'):
-        return key.value.vk
-    else:
-        return key.vk
-
-
 def create_macro_string(key_events):
     mask_dict = masking_dict()
 
@@ -40,16 +30,16 @@ def create_macro_string(key_events):
         for button_num in sorted(key_events.keys()):
             macro_string = ''
             prev_time = 0
-            for time_key in sorted(key_events[button_num]['key_events'].keys()):
-                wait_time = float(time_key) * 1000 - prev_time
-                prev_time = float(time_key) * 1000
-                key_action = key_events[button_num]['key_events'][time_key][0]
+            for key_entry in key_events[button_num]['key_events']:
+                wait_time = float(key_entry.time) * 1000 - prev_time
+                prev_time = float(key_entry.time) * 1000
+                key_action = key_entry.event_type
                 mod_key = 'p,'
-                if key_action == 'release':
+                if key_action == 'up':
                     mod_key = 'r,'
-                key = key_events[button_num]['key_events'][time_key][1]
-                vk_code = get_vk(key)
-                hex_code = mask_dict[vk_code][-1]
+                key = key_entry.scan_code
+                #vk_code = get_vk(key)
+                hex_code = mask_dict[key][-1]
                 if hex_code == -1:
                     print('Sorry, but the key code \"{0}\" is not currently supported'.format(vk_code))
                     print('Please direct this error to https://github.com/windykeyboards/southerly-front')
@@ -77,7 +67,7 @@ def masking_dict():
     :return: dictionary of virtual key to a list of teensy key name, and hex value
     """
 
-    vk_map = resource_filename(__name__, 'vk_key_mappings.txt')
+    vk_map = resource_filename(__name__, 'scan_code_mappings.txt')
     hex_map = resource_filename(__name__, 'teensy_key_definitions.txt')
 
     mask_dict = {}

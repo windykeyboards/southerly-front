@@ -38,7 +38,7 @@ def create_macro_string(key_events):
                 if key_action == 'up':
                     mod_key = 'r,'
                 key = key_entry.scan_code
-                #vk_code = get_vk(key)
+                # vk_code = get_vk(key)
                 hex_code = mask_dict[key][-1]
                 if hex_code == -1:
                     print('Sorry, but the key code \"{0}\" is not currently supported'.format(vk_code))

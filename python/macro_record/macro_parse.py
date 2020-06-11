@@ -21,6 +21,7 @@ def parse_timings(keyboard_strokes):
     :param keyboard_strokes:    list of keyboard Events
     :return:                    list of keyboard events
     """
+
     zeroed_events = []
     start_time = 0
     for event in keyboard_strokes:
@@ -30,7 +31,10 @@ def parse_timings(keyboard_strokes):
         zeroed_events[-1].time = event.time - start_time
 
     # TODO make this user configurable as required
-    del(zeroed_events[-1])
+    try:
+        del(zeroed_events[-1])
+    except IndexError:
+        print("List assignment out of range")
     return zeroed_events
 
 def parse_to_string(keyboard_strokes):

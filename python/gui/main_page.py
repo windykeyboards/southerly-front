@@ -5,19 +5,27 @@ Same source, but code layout beautified and simplified
 
 import re
 import os
+import sys
 import json
-from PyQt5 import QtCore, QtGui, QtWidgets, uic
+import python.gui.loadui as loadui
+from PySide2 import QtCore, QtGui, QtWidgets, QtUiTools
 from python.macro_record import macro_parse
 from keyboard import KeyboardEvent
 from python.device_programming import macro_language_parse
 
 
 class Ui_MainWindow(QtWidgets.QWidget):
-    def __init__(self):
-        super().__init__()
-        file = open('main_window.ui', 'r')
-        self.ui = uic.loadUi(file)
-        file.close()
+    def __init__(self, parent=None):
+        super(Ui_MainWindow, self).__init__(parent)
+
+        """
+        loader = QtUiTools.QUiLoader()
+        ui_file = QtCore.QFile('main_window.ui')
+        ui_file.open(QtCore.QFile.ReadOnly)
+        self.ui = loader.load(ui_file, self)
+        ui_file.close()
+        """
+        self.ui = loadui.loadUi('main_window.ui', self)
 
         '''
         Data storage variables
@@ -29,6 +37,7 @@ class Ui_MainWindow(QtWidgets.QWidget):
         '''
         User interaction assets
         '''
+
 
         self.ui.macro_name_label.setAutoFillBackground(False)
         self.ui.macro_name_label.setFrameShape(QtWidgets.QFrame.StyledPanel)
@@ -99,8 +108,6 @@ class Ui_MainWindow(QtWidgets.QWidget):
         '''
         self.select_keyboard_button(1)
 
-        self.ui.show()
-
     def label_macro(self):
         """
         Open up a brief text dialog window that allows input
@@ -113,9 +120,6 @@ class Ui_MainWindow(QtWidgets.QWidget):
         if self.selected_key in self.macros.keys():
             text, pressed = QtWidgets.QInputDialog.getText(self, "Label Macro", "Macro Name:",
                                                            QtWidgets.QLineEdit.Normal, "")
-            if pressed and text != '':
-                self.macros[self.selected_key]['name'] = text
-                self.ui.macro_name_label.setText(text)
         else:
              QtWidgets.QMessageBox.critical(self, "No Macro to name", "Please record a macro first to name it")
 
@@ -131,11 +135,20 @@ class Ui_MainWindow(QtWidgets.QWidget):
         :return: None
         """
 
+        # There's this horrible condition where a single space press
+        # will somehow trigger another re-recording of the macro
+        # So this event will trigger twice on that condition
+
         self.set_stylesheet(self.ui.record_macro_btn, 'background-color:#FF0000;')
         self.ui.record_macro_btn.setText('RECORDING')
         self.ui.record_macro_btn.repaint()
 
         recorded_input = macro_parse.listen_to_keyboard()
+        if recorded_input == []:
+            # Occurs when the spacebar is pressed
+            self.set_stylesheet(self.ui.record_macro_btn, '')
+            self.ui.record_macro_btn.setText("Record Macro")
+            return
 
         # Save the recorded keyboard presses
         self.set_stylesheet(self.ui.record_macro_btn, '')
@@ -274,30 +287,29 @@ class Ui_MainWindow(QtWidgets.QWidget):
         # TODO Refactor definition of keys to make this code simpler
         if self.selected_key == 1:
             self.set_stylesheet(self.ui.keycap_one_btn, '')
-        if self.selected_key == 2:
+        elif self.selected_key == 2:
             self.set_stylesheet(self.ui.keycap_two_btn, '')
-        if self.selected_key == 3:
+        elif self.selected_key == 3:
             self.set_stylesheet(self.ui.keycap_three_btn, '')
-        if self.selected_key == 4:
+        elif self.selected_key == 4:
             self.set_stylesheet(self.ui.keycap_four_btn, '')
-        if self.selected_key == 5:
+        elif self.selected_key == 5:
             self.set_stylesheet(self.ui.keycap_five_btn, '')
-        if self.selected_key == 6:
+        elif self.selected_key == 6:
             self.set_stylesheet(self.ui.keycap_six_btn, '')
-
         self.selected_key = key_button
 
         if self.selected_key == 1:
             self.set_stylesheet(self.ui.keycap_one_btn, 'background-color:#F4F9E1;')
-        if self.selected_key == 2:
+        elif self.selected_key == 2:
             self.set_stylesheet(self.ui.keycap_two_btn, 'background-color:#F4F9E1;')
-        if self.selected_key == 3:
+        elif self.selected_key == 3:
             self.set_stylesheet(self.ui.keycap_three_btn, 'background-color:#F4F9E1;')
-        if self.selected_key == 4:
+        elif self.selected_key == 4:
             self.set_stylesheet(self.ui.keycap_four_btn, 'background-color:#F4F9E1;')
-        if self.selected_key == 5:
+        elif self.selected_key == 5:
             self.set_stylesheet(self.ui.keycap_five_btn, 'background-color:#F4F9E1;')
-        if self.selected_key == 6:
+        elif self.selected_key == 6:
             self.set_stylesheet(self.ui.keycap_six_btn, 'background-color:#F4F9E1;')
 
         if self.selected_key in self.macros.keys():
@@ -312,8 +324,7 @@ class Ui_MainWindow(QtWidgets.QWidget):
 
 
 if __name__ == "__main__":
-    import sys
-
     app = QtWidgets.QApplication(sys.argv)
-    ui = Ui_MainWindow()
+    macro_ui = Ui_MainWindow()
+    macro_ui.show()
     sys.exit(app.exec_())

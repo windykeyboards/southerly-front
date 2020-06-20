@@ -120,6 +120,9 @@ class Ui_MainWindow(QtWidgets.QWidget):
         if self.selected_key in self.macros.keys():
             text, pressed = QtWidgets.QInputDialog.getText(self, "Label Macro", "Macro Name:",
                                                            QtWidgets.QLineEdit.Normal, "")
+            if pressed and text != '':
+                self.macros[self.selected_key]['name'] = text
+                self.ui.macro_name_label.setText(text)
         else:
              QtWidgets.QMessageBox.critical(self, "No Macro to name", "Please record a macro first to name it")
 

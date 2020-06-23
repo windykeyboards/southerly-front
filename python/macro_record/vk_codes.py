@@ -1,15 +1,15 @@
 """
+HELPER CODE
 Used in the creation of a parsing method
-Every key recorded by pynput has a unique key code
+Every key recorded by the keyboard interface has a unique scan code
 
 To effectively pass this into the Teensy executable key codes each is needed
-This function is written so that a user can execute it and find the keycode
+This function is written so that a user can execute it and find the scan code
 for a key on their keyboard and add that to the parser if required
 
 """
 
-import time
-from pynput.keyboard import Key, Listener
+import keyboard as keyboard
 
 def print_key(key):
     """
@@ -18,33 +18,16 @@ def print_key(key):
     :param key: Keycode from Pynput
     :return:
     """
-    if hasattr(key, 'value'):
-        print('{0} - {1}'.format(key, key.value.vk))
-    else:
-        print('{0} - {1}'.format(key, key.vk))
-
-
-def return_only(key):
-    """
-    The listener requires a function, but we don't need the releases
-    """
-    return
+    if key.event_type == 'down':
+        print("Name {0}\tScan Code {1}".format(key.name, key.scan_code))
 
 
 def listen():
     """
-    Main function to call, will implement a listener and return these events
-    Should return raw dictionary with no parsing having occured
-
-
-    :param exit_condition:  Key, or list of key events, to stop the listener
-    :return:                Dictionary of times, to press/release and key codes
+    Main function to call, will hook the keyboard
     """
 
-    with Listener(
-            on_press=print_key,
-            on_release=return_only) as listener:
-        listener.join()
-
+    keyboard.hook(print_key)
+    keyboard.wait('esc')
 
 listen()

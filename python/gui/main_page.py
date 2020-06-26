@@ -7,8 +7,8 @@ import re
 import os
 import sys
 import json
+from PySide2 import QtWidgets, QtCore
 import python.gui.loadui as loadui
-from PySide2 import QtCore, QtGui, QtWidgets, QtUiTools
 from python.macro_record import macro_parse
 from keyboard import KeyboardEvent
 from python.device_programming import macro_language_parse

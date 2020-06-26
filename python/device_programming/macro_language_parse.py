@@ -1,9 +1,24 @@
 """
-This takes in the key events given by the main_page methods and parses it as such:
+This takes in the key events given by the main_page methods and parses it to a .wkm file
 
-p - press, signifies the press of a key
-t - time, in ms to wait
-u - release, represents the release of a key
+The file structure looks like this
+---------------------
+syntax = "proto3";
+
+package windy.keyboards;
+
+message Macro {
+    repeated Micro micros = 1;
+}
+
+message Micro {
+    oneof action {
+        int32 delay = 1;
+        byte press = 2;
+        byte release = 3;
+    }
+}
+---------------------
 
 Currently using the teensy library to interface with a machine
 As such the identities of keys are masked hex as shown here:
@@ -26,17 +41,24 @@ from pkg_resources import resource_filename  # to read the text files in the mod
 def create_macro_string(key_events):
     mask_dict = masking_dict()
 
+    buf_per_key ={}
     try:
         for button_num in sorted(key_events.keys()):
-            macro_string = ''
+            protobuf = []
+            protobuf.append('syntax = "proto3";')
+            protobuf.append('package windy.keyboards;')
+            protobuf.append('message Macro {repeated Micro micros = 1;}')
+
             prev_time = 0
             for key_entry in key_events[button_num]['key_events']:
+                macro_string = 'message Micro { oneof action { '
                 wait_time = float(key_entry.time) * 1000 - prev_time
                 prev_time = float(key_entry.time) * 1000
                 key_action = key_entry.event_type
-                mod_key = 'p,'
+                if key_action =='down':
+                    macro_string = macro_string + 'byte press ='
                 if key_action == 'up':
-                    mod_key = 'r,'
+                    macro_string = macro_string + 'byte release ='
                 key = key_entry.scan_code
                 # vk_code = get_vk(key)
                 hex_code = mask_dict[key][-1]
@@ -44,14 +66,18 @@ def create_macro_string(key_events):
                     print('Sorry, but the key code \"{0}\" is not currently supported'.format(vk_code))
                     print('Please direct this error to https://github.com/windykeyboards/southerly-front')
                     continue
+                macro_string = macro_string + hex_code + ';}}'
 
-                macro_string += 't,' + str(int(wait_time)) + '\n'
-                macro_string += mod_key + hex_code + '\n'
-            print(macro_string)
+                # Add timing after the fact
+                delay_string = 'message Micro { oneof action {int32 delay = ' + str(int(wait_time)) + ';}}'
+                protobuf.append(macro_string)
+                protobuf.append(delay_string)
+            buf_per_key[button_num] = protobuf
+
     except:
         print('Unable to parse macro to macro string\nPossible Issues:\n')
         print('\tUnknown key code\n\tcorrupted key event dictionary\n\thex key code dictionary incomplete')
-
+    print('\n'.join(protobuf))
 
 def masking_dict():
     """

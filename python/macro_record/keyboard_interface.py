@@ -18,13 +18,13 @@ def listen(exit_condition):
 
     # Collect events until released
     # TODO use the passed exit condition
-    start_time = time.clock()
+    start_time = time.process_time()
     keyboard.start_recording()
     while True:
         if keyboard.is_pressed('esc'):
             recorded_keys = keyboard.stop_recording()
             break
-        elif time.clock() - 30 > start_time:
+        elif time.process_time() - 30 > start_time:
             recorded_keys = keyboard.stop_recording()
             break
 

@@ -47,7 +47,7 @@ def create_macro_string(key_events):
             protobuf = []
             protobuf.append('syntax = "proto3";')
             protobuf.append('package windy.keyboards;')
-            protobuf.append('message Macro {repeated Micro micros = 1;}')
+            protobuf.append('message Macro {repeated Micro micros = '  + str(button_num) + ';}')
 
             prev_time = 0
             for key_entry in key_events[button_num]['key_events']:

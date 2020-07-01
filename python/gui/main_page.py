@@ -254,8 +254,8 @@ class Ui_MainWindow(QtWidgets.QWidget):
         class KeyCodeEncoder(json.JSONEncoder):
             def default(self, obj):
                 # Extract the useful info from the keys, nothing more
-                if isinstance(obj, KeyboardEvent):
-                    return json.loads(obj.to_json())
+                if isinstance(type(obj), type(KeyboardEvent)):
+                    return json.loads(KeyboardEvent.to_json(obj))
                 return json.JSONEncoder.default(self, obj)
 
         with open(save_file_path[0], 'w') as fp:

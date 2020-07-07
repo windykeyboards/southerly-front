@@ -275,7 +275,8 @@ class Ui_MainWindow(QtWidgets.QWidget):
         """
         print("Partially implemented program")
 
-        macro_language_parse.create_macro_string(self.macros)
+        #macro_language_parse.create_macro_string(self.macros)
+        macro_language_parse.create_protobuf_macros(self.macros)
 
     def select_keyboard_button(self, key_button):
         """

@@ -36,7 +36,51 @@ r,E001
 
 import re
 from pkg_resources import resource_filename  # to read the text files in the module
+import python.device_programming.windy_proto_pb2 as proto_macro
 
+
+def create_protobuf_macros(key_events):
+    mask_dict = masking_dict()
+
+    try:
+        for button_num in sorted(key_events.keys()):
+            key_protobuf = proto_macro.Macro()
+
+            prev_time = 0
+            for key_entry in key_events[button_num]['key_events']:
+
+                wait_time = float(key_entry.time) * 1000 - prev_time
+                prev_time = float(key_entry.time) * 1000
+                key_action = key_entry.event_type
+                key = key_entry.scan_code
+                try:
+                    hex_code = mask_dict[key][-1]
+                except KeyError as error:
+                    print('Sorry, but the scan code \"{0}\" is not currently supported'.format(key))
+                    print('Error is {0}'.format(error))
+                    print('Please direct this error to https://github.com/windykeyboards/southerly-front')
+                    continue
+                if hex_code == -1 or hex_code == 'None':
+                    print('Sorry, but the key code \"{0}\" is not currently supported'.format(key_entry.name))
+                    print('Please direct this error to https://github.com/windykeyboards/southerly-front')
+                    continue
+                if key_action =='down':
+                    event_micro = proto_macro.Micro()
+                    event_micro.press = int(hex_code, 16)
+                    key_protobuf.micros.append(event_micro)
+                if key_action == 'up':
+                    event_micro = proto_macro.Micro()
+                    event_micro.release = int(hex_code, 16)
+                    key_protobuf.micros.append(event_micro)
+
+                wait_micro = proto_macro.Micro()
+                wait_micro.delay = int(wait_time)
+
+            with open('{0}.wkm'.format(button_num), 'wb') as wkm_out:
+                wkm_out.write(key_protobuf.SerializeToString())
+
+    except Exception as err:
+        print(err)
 
 def create_macro_string(key_events):
     mask_dict = masking_dict()
@@ -77,11 +121,18 @@ def create_macro_string(key_events):
     except:
         print('Unable to parse macro to macro string\nPossible Issues:\n')
         print('\tUnknown key code\n\tcorrupted key event dictionary\n\thex key code dictionary incomplete')
-    print('\n'.join(protobuf))
+
+    for key in buf_per_key:
+        out_file = open( str(key) + '.proto', 'w')
+        out_file.write('\n'.join(buf_per_key[key]))
+        out_file.close()
+
 
 def masking_dict():
     """
     Teensy uses different masks and values for different keys
+
+    We need to know what a key press is recorded as, then what to convert to
 
     The Virtual Key numbers are mapped to a Teensy Key code
     - Found in vk_key_mappings.txt, created by hand
@@ -101,7 +152,7 @@ def masking_dict():
         for line in f.readlines():
             temp_str = re.sub(r'[\ ]+', ' ', line)
             temp_str = re.sub(r'\n', '', temp_str)
-            mask_dict[int(temp_str.split(' ')[0])] = [temp_str.split(' ')[1]]
+            mask_dict[int(temp_str.split('\t')[0])] = [temp_str.split('\t')[1]]
 
     hex_dict = {}
     with open(hex_map, 'r') as f:
@@ -119,7 +170,10 @@ def masking_dict():
         if mask_dict[key][0] == 'None':
             mask_dict[key].append('None')
             continue
-        mask_dict[key].append(hex_dict[mask_dict[key][0]])
+        try:
+            mask_dict[key].append(hex_dict[mask_dict[key][0]])
+        except KeyError as error:
+            print('Error in adding keys to dict: {0}'.format(error))
 
     return mask_dict
 
